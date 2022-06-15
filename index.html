@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongodb Query</title>
+    <script>
+      const URL = "http://localhost:8000/search/";
+      document.addEventListener("DOMContentLoaded", function(event){
+        let searchinput = document.getElementById("searchinput");
+        let searchresult = document.getElementById("searchresult");
+        searchinput.addEventListener("input",function(e){
+          let searchstring = searchinput.value;
+          searchstring = searchstring.toLowerCase().trim();
+          fetch(URL+searchstring)
+            .then(response => response.json())
+            .then(data => {
+              searchresult.innerText=JSON.stringify(data);
+            })
+            .catch(function() {
+              searchresult.innerText="error";
+            });
+        })
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Searchengine for Mongodb mit einem Suchbegriff</h1>
+    <input id="searchinput" x-webkit-speech>
+    <div id="searchresult">
+    </div>
+  </body>
+</html>
