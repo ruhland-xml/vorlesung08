@@ -1,5 +1,15 @@
 # vorlesung08 Restful Web-Service für die Suchmaschine
 
+## Installation der Programme
+
+Nach dem Clonen aus dem GitHub-Verzeichnis $https://github.com/ruhland-xml/vorlesung08.git$ muss man
+
+```
+$npm install
+```
+
+aufrufen
+
 ## Restful Webservice
 
 NodeJS Projekt mit Express
