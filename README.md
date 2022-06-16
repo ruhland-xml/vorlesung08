@@ -2,7 +2,7 @@
 
 ## Installation der Programme
 
-Nach dem Clonen aus dem GitHub-Verzeichnis $https://github.com/ruhland-xml/vorlesung08.git$ muss man
+Nach dem Clonen aus dem GitHub-Verzeichnis `https://github.com/ruhland-xml/vorlesung08.git` muss man
 
 ```
 $npm install
