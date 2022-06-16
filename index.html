@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mongodb Query</title>
+    <script src="./B58Coding.bundle.js"></script>
+
     <script>
       const URL = "http://localhost:8000/search/";
       document.addEventListener("DOMContentLoaded", function(event){
@@ -12,16 +14,26 @@
         searchinput.addEventListener("input",function(e){
           let searchstring = searchinput.value;
           searchstring = searchstring.toLowerCase().trim();
-          fetch(URL+searchstring)
-            .then(response => response.json())
-            .then(data => {
-              searchresult.innerText=JSON.stringify(data);
-            })
-            .catch(function() {
-              searchresult.innerText="error";
-            });
+          if ( searchstring === null || searchstring === "")
+            searchresult.innerText="";
+          else {
+            let b58searchstring = B58Coding.encode(searchstring);
+            fetch(URL+b58searchstring)
+              .then(response => response.json())
+              .then(data => {
+                let output_string = "";
+                for ( let i=0; i<data.docs.length; i++){
+                  output_string+=JSON.stringify(data.docs[i]);
+                  output_string+="<br>";
+                }
+                searchresult.innerText=output_string;
+              })
+              .catch(function() {
+                searchresult.innerText="error";
+              });
+            }
         })
-      });
+      });      
     </script>
   </head>
   <body>
